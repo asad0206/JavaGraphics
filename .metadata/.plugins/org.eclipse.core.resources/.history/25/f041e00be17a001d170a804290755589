@@ -4,9 +4,7 @@ import java.awt.Canvas;
 
 import javax.swing.JFrame;
 
-import com.mime.minefront.graphics.Render;
-
-public class Display extends Canvas implements Runnable {
+public class Display extends Canvas implements Runable {
 	
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 600;
@@ -14,11 +12,6 @@ public class Display extends Canvas implements Runnable {
 	
 	private Thread thread;
 	private boolean running = false;
-	private Render render;
-	
-	public Display() {
-		render = new Render(WIDTH, HEIGHT);
-	}
 	
 	private void start() {
 		if (running)
@@ -28,30 +21,7 @@ public class Display extends Canvas implements Runnable {
 		thread.start();
 	}
 	
-	private void stop() {
-		if (!running)
-			return;
-		running = false;
-		try {
-			thread.join();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
-	}
-	
 	public void run() {
-		while (running) {
-			tick();
-			render();
-		}
-	}
-	
-	private void tick() {
-		
-	}
-	
-	private void render() {
 		
 	}
 	
@@ -67,7 +37,5 @@ public class Display extends Canvas implements Runnable {
 		frame.setVisible(true);
 		
 		System.out.println("Running....");
-		
-		game.start();
 	}
 }
